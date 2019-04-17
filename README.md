@@ -1,2 +1,2 @@
-# star-wars-api-react
+# Star Wars API React
 API de busca utilizando SWAPI
