@@ -21,6 +21,12 @@ class Inicio extends Component {
     });
   }
 
+  buscaEnter(event) {
+    if(event.key === 'Enter') {
+      this.botaoBuscar(event);
+    }
+  }
+
   botaoBuscar(event) {
     event.preventDefault();
 
@@ -95,7 +101,7 @@ class Inicio extends Component {
           <img src={logo} alt="Star Wars" />
         </section>
         <section className="search">
-          <input type="text" name="termo" value={this.state.termo} onChange={this.handleChange.bind(this)} />
+          <input type="text" name="termo" value={this.state.termo} onChange={this.handleChange.bind(this)} onKeyPress={this.buscaEnter.bind(this)} />
           <button onClick={this.botaoBuscar.bind(this)}>Search</button>
         </section>
       </div>
