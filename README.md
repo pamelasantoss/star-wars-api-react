@@ -6,7 +6,6 @@ These project was created to practice React. I used the [SWAPI API](https://www.
 It's a simple app, only for search a lot of information about your favourite character from all the Star Wars' movies.
 
 I use the [create-react-app](https://github.com/facebook/create-react-app) to run the enviroment react in the machine.
-For the style, I use my [framework css](https://github.com/pamelasantoss/framework-css).
 
 ## Getting Started
 
