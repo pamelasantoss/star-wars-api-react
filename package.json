@@ -1,7 +1,18 @@
 {
   "name": "star-wars-api-react",
   "version": "0.1.0",
+  "description": "Search API with React and SWAPI",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pamelasantoss/star-wars-api-react.git"
+  },
+  "author": "Pamela Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pamelasantoss/star-wars-api-react/issues"
+  },
+  "homepage": "https://github.com/pamelasantoss/star-wars-api-react#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "node-sass": "^4.11.0",
