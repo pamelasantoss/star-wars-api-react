@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/pamelasantoss/star-wars-api-react/issues"
   },
-  "homepage": "https://github.com/pamelasantoss/star-wars-api-react#readme",
+  "homepage": "https://flamboyant-meitner-87110c.netlify.com/",
   "dependencies": {
     "axios": "^0.18.0",
     "node-sass": "^4.11.0",
