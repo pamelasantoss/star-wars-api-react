@@ -36,7 +36,7 @@ class Inicio extends Component {
       loading: true
     })
 
-    axios.get(`https://swapi.co/api/people/?search=${termo}`)
+    axios.get(`https://swapi.dev/api/people/?search=${termo}`)
       .then((response) => {
         this.setState({
           dados: response.data.results[0],
