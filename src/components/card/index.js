@@ -12,7 +12,7 @@ class card extends Component {
     return (
       <div className="card">
         <div className="foto">
-          <img src={imagem} />
+          <img src={imagem} alt={dados.name} />
         </div>
 
         <div className="titulo">

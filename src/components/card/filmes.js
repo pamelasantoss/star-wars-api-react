@@ -11,17 +11,21 @@ class filmes extends Component {
     const { dados } = this.props;
 
     dados.films.map((film) => {
-      axios.get(film)
-        .then((response) => {
-          this.setState({
-            filmes: response.data
-          })
+      if (film) {
+        axios.get(film)
+          .then((response) => {
+            this.setState({
+              filmes: response.data
+            })
 
-          this.state.arrayFilmes.push(response.data)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+            this.state.arrayFilmes.push(response.data)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+
+      return null
     })
   }
 

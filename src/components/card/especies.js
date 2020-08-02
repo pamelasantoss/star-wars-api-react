@@ -11,17 +11,21 @@ class especies extends Component {
     const { dados } = this.props;
 
     dados.species.map((specie) => {
-      axios.get(specie)
-        .then((response) => {
-          this.setState({
-            especies: response.data
-          })
+      if (specie) {
+        axios.get(specie)
+          .then((response) => {
+            this.setState({
+              especies: response.data
+            })
 
-          this.state.arrayEspecies.push(response.data)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+            this.state.arrayEspecies.push(response.data)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+
+      return null
     })
   }
 

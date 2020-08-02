@@ -11,17 +11,21 @@ class naves extends Component {
     const { dados } = this.props;
 
     dados.starships.map((starship) => {
-      axios.get(starship)
-        .then((response) => {
-          this.setState({
-            naves: response.data
-          })
+      if (starship) {
+        axios.get(starship)
+          .then((response) => {
+            this.setState({
+              naves: response.data
+            })
 
-          this.state.arrayNaves.push(response.data)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+            this.state.arrayNaves.push(response.data)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+
+      return null
     })
   }
 

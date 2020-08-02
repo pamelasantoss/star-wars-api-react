@@ -11,17 +11,21 @@ class veiculos extends Component {
     const { dados } = this.props;
 
     dados.vehicles.map((vehicle) => {
-      axios.get(vehicle)
-        .then((response) => {
-          this.setState({
-            veiculos: response.data
-          })
+      if (vehicle) {
+        axios.get(vehicle)
+          .then((response) => {
+            this.setState({
+              veiculos: response.data
+            })
 
-          this.state.arrayVeiculos.push(response.data)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+            this.state.arrayVeiculos.push(response.data)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+
+      return null
     })
   }
 
