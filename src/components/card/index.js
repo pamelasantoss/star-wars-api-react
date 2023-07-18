@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Filmes from './filmes.js';
-import Especies from './especies.js';
-import Veiculos from './veiculos.js';
-import Naves from './naves.js';
-import Voltar from '../voltar-button.js';
+import React, { Component } from "react";
+import Filmes from "./filmes.js";
+import Especies from "./especies.js";
+import Veiculos from "./veiculos.js";
+import Naves from "./naves.js";
+import Voltar from "../Voltar.js";
 
 class card extends Component {
   render() {
@@ -55,9 +55,9 @@ class card extends Component {
               <Especies dados={dados} />
             </ul>
 
-            { dados.vehicles.length > 0 ? <Veiculos dados={dados} /> : null }
+            {dados.vehicles.length > 0 ? <Veiculos dados={dados} /> : null}
 
-            { dados.starships.length > 0 ? <Naves dados={dados} /> : null }
+            {dados.starships.length > 0 ? <Naves dados={dados} /> : null}
           </div>
         </div>
 
@@ -65,7 +65,7 @@ class card extends Component {
           <Voltar />
         </div>
       </div>
-    )
+    );
   }
 }
 
