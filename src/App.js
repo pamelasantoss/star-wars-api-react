@@ -1,4 +1,4 @@
-import Inicio from "./components/inicial";
+import Inicio from "./components/Inicio";
 
 function App() {
   return (
