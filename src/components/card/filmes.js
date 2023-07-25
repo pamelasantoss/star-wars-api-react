@@ -1,60 +1,36 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import { fetchData } from "../utils/fetchData";
 
-class filmes extends Component {
-  state = {
-    filmes: null,
-    arrayFilmes: []
+function Filmes({ films }) {
+  const [getFilms, setGetFilms] = useState(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      const displayData = await fetchData(films);
+      setGetFilms(displayData);
+    };
+
+    getData();
+  }, [films]);
+
+  if (!getFilms) {
+    return <p>Loading...</p>;
   }
 
-  componentDidMount() {
-    const { dados } = this.props;
-
-    dados.films.map((film) => {
-      if (film) {
-        axios.get(film)
-          .then((response) => {
-            this.setState({
-              filmes: response.data
-            })
-
-            this.state.arrayFilmes.push(response.data)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
-
-      return null
-    })
+  if (getFilms.length === 0) {
+    return null;
   }
 
-  renderFilmes() {
-    const { filmes, arrayFilmes } = this.state;
-
-    if (filmes) {
-      const todosFilmes = [filmes];
-      const buildList = arrayFilmes.concat(todosFilmes);
-
-      return (
-        buildList.map((filme, key) => {
-          return (
-            <li key={key}>{filme.title}</li>
-          )
-        })
-      )
-    } else {
-      return (
-        <p>Loading...</p>
-      )
-    }
-  }
-
-  render() {
-    return (
-      this.renderFilmes()
-    )
-  }
+  return (
+    <>
+      <h3>Films</h3>
+      <ul>
+        {getFilms.map((film) => (
+          <li key={film.episode_id}>{film.title}</li>
+        ))}
+      </ul>
+    </>
+  );
 }
 
-export default filmes;
+export default Filmes;

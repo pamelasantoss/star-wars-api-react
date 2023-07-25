@@ -1,60 +1,36 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import { fetchData } from "../utils/fetchData";
 
-class especies extends Component {
-  state = {
-    especies: null,
-    arrayEspecies: []
+function Especies({ species }) {
+  const [getSpecies, setGetSpecies] = useState(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      const displayData = await fetchData(species);
+      setGetSpecies(displayData);
+    };
+
+    getData();
+  }, [species]);
+
+  if (!getSpecies) {
+    return <p>Loading...</p>;
   }
 
-  componentDidMount() {
-    const { dados } = this.props;
-
-    dados.species.map((specie) => {
-      if (specie) {
-        axios.get(specie)
-          .then((response) => {
-            this.setState({
-              especies: response.data
-            })
-
-            this.state.arrayEspecies.push(response.data)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
-
-      return null
-    })
+  if (getSpecies.length === 0) {
+    return null;
   }
 
-  renderEspecies() {
-    const { especies, arrayEspecies } = this.state;
-
-    if (especies) {
-      const todasEspecies = [especies];
-      const buildList = arrayEspecies.concat(todasEspecies);
-
-      return (
-        buildList.map((especie, key) => {
-          return (
-            <li key={key}>{especie.name}</li>
-          )
-        })
-      )
-    } else {
-      return (
-        <p>Loading...</p>
-      )
-    }
-  }
-
-  render() {
-    return (
-      this.renderEspecies()
-    )
-  }
+  return (
+    <>
+      <h3>Species</h3>
+      <ul>
+        {getSpecies.map((specie) => (
+          <li key={specie.name}>{specie.name}</li>
+        ))}
+      </ul>
+    </>
+  );
 }
 
-export default especies;
+export default Especies;
