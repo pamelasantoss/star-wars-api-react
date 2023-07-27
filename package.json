@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/pamelasantoss/star-wars-api-react/issues"
   },
-  "homepage": "https://flamboyant-meitner-87110c.netlify.com/",
+  "homepage": ".",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,5 +33,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }
