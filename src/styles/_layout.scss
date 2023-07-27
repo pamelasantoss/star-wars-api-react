@@ -10,6 +10,9 @@ body {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
+  //position: absolute;
+  //left: 50%;
+  //transform: translate(-50%, 50%);
 }
 
 .carregando {
@@ -55,16 +58,6 @@ body {
       background: #000;
       color: #fff;
     }
-  }
-}
-
-.alert {
-  display: flex;
-  justify-content: center;
-  margin: 15px 0;
-
-  p {
-    color: #fff;
   }
 }
 

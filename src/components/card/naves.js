@@ -1,36 +1,65 @@
-import { useEffect, useState } from "react";
-import { fetchData } from "../utils/fetchData";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-function Naves({ starships }) {
-  const [getStarships, setGetStarships] = useState(null);
-
-  useEffect(() => {
-    const getData = async () => {
-      const displayData = await fetchData(starships);
-      setGetStarships(displayData);
-    };
-
-    getData();
-  }, [starships]);
-
-  if (!getStarships) {
-    return <p>Loading...</p>;
+class naves extends Component {
+  state = {
+    naves: null,
+    arrayNaves: []
   }
 
-  if (getStarships.length === 0) {
-    return null;
+  componentDidMount() {
+    const { dados } = this.props;
+
+    dados.starships.map((starship) => {
+      if (starship) {
+        axios.get(starship)
+          .then((response) => {
+            this.setState({
+              naves: response.data
+            })
+
+            this.state.arrayNaves.push(response.data)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+
+      return null
+    })
   }
 
-  return (
-    <>
-      <h3>Starships</h3>
-      <ul>
-        {getStarships.map((starship) => (
-          <li key={starship.name}>{starship.name}</li>
-        ))}
-      </ul>
-    </>
-  );
+  renderNaves() {
+    const { naves, arrayNaves } = this.state;
+
+    if (naves) {
+      const todasNaves = [naves];
+      const buildList = arrayNaves.concat(todasNaves);
+
+      return (
+        buildList.map((nave, key) => {
+          return (
+            <li key={key}>{nave.name}</li>
+          )
+        })
+      )
+    } else {
+      return (
+        <p>Loading...</p>
+      )
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Starships</h3>
+        <ul>
+          {this.renderNaves()}
+        </ul>
+      </div>
+    )
+  }
 }
 
-export default Naves;
+export default naves;

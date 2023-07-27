@@ -1,11 +1,14 @@
-import Inicio from "./components/Inicio";
+import React, { Component } from 'react';
+import Inicio from './components/inicial';
 
-function App() {
-  return (
-    <div className="main">
-      <Inicio />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="main">
+        <Inicio />
+      </div>
+    );
+  }
 }
 
 export default App;
