@@ -1,65 +1,36 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import { fetchData } from "../utils/fetchData";
 
-class veiculos extends Component {
-  state = {
-    veiculos: null,
-    arrayVeiculos: []
+function Veiculos({ vehicles }) {
+  const [getVehicles, setGetVehicles] = useState(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      const displayData = await fetchData(vehicles);
+      setGetVehicles(displayData);
+    };
+
+    getData();
+  }, [vehicles]);
+
+  if (!getVehicles) {
+    return <p>Loading...</p>;
   }
 
-  componentDidMount() {
-    const { dados } = this.props;
-
-    dados.vehicles.map((vehicle) => {
-      if (vehicle) {
-        axios.get(vehicle)
-          .then((response) => {
-            this.setState({
-              veiculos: response.data
-            })
-
-            this.state.arrayVeiculos.push(response.data)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
-
-      return null
-    })
+  if (getVehicles.length === 0) {
+    return null;
   }
 
-  renderVeiculos() {
-    const { veiculos, arrayVeiculos } = this.state;
-
-    if (veiculos) {
-      const todosVeiculos = [veiculos];
-      const buildList = arrayVeiculos.concat(todosVeiculos);
-
-      return (
-        buildList.map((veiculo, key) => {
-          return (
-            <li key={key}>{veiculo.name}</li>
-          )
-        })
-      )
-    } else {
-      return (
-        <p>Loading...</p>
-      )
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <h3>Vehicles</h3>
-        <ul>
-          {this.renderVeiculos()}
-        </ul>
-      </div>
-    )
-  }
+  return (
+    <>
+      <h3>Vehicles</h3>
+      <ul>
+        {getVehicles.map((vehicle) => (
+          <li key={vehicle.name}>{vehicle.name}</li>
+        ))}
+      </ul>
+    </>
+  );
 }
 
-export default veiculos;
+export default Veiculos;
