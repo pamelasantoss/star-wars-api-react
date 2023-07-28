@@ -1,6 +1,6 @@
 # Star Wars API React
 
-Search API with React and SWAPI [see online](https://flamboyant-meitner-87110c.netlify.com/)
+Search API with React and SWAPI [see online](https://harmonious-dragon-748bee.netlify.app/)
 
 These project was created to practice React. I used the [SWAPI API](https://www.swapi.co/) to create the search app.
 It's a simple app, only for search a lot of information about your favourite character from all the Star Wars' movies.
