@@ -1,4 +1,4 @@
-import loading from "../images/loading.gif";
+import loading from "../../images/loading.gif";
 
 function Loading() {
   return (

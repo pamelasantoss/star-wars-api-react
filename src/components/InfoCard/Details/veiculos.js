@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchData } from "../utils/fetchData";
+import { fetchData } from "../../utils/fetchData";
 
 function Veiculos({ vehicles }) {
   const [getVehicles, setGetVehicles] = useState(null);

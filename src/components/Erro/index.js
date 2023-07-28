@@ -1,4 +1,4 @@
-import Voltar from "./Voltar";
+import Voltar from "../Voltar";
 
 function Erro() {
   return (

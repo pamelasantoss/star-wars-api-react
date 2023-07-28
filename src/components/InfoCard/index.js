@@ -1,11 +1,11 @@
 import Voltar from "../Voltar";
-import Especies from "./especies";
-import Filmes from "./filmes";
-import Naves from "./naves";
-import Planetas from "./planetas";
-import Veiculos from "./veiculos";
+import Especies from "./Details/especies";
+import Filmes from "./Details/filmes";
+import Naves from "./Details/naves";
+import Planetas from "./Details/planetas";
+import Veiculos from "./Details/veiculos";
 
-function Card({ imagem, dados }) {
+function InfoCard({ imagem, dados }) {
   return (
     <div className="card">
       <div className="foto">
@@ -40,13 +40,9 @@ function Card({ imagem, dados }) {
           <h2>More information</h2>
 
           <Planetas planet={dados.homeworld} />
-
           <Filmes films={dados.films} />
-
           <Especies species={dados.species} />
-
           <Veiculos vehicles={dados.vehicles} />
-
           <Naves starships={dados.starships} />
         </div>
       </div>
@@ -58,4 +54,4 @@ function Card({ imagem, dados }) {
   );
 }
 
-export default Card;
+export default InfoCard;

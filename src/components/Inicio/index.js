@@ -3,7 +3,7 @@ import logo from "../../images/star-wars-logo.png";
 import defaultImage from "../../images/default.jpg";
 import Loading from "../Loading";
 import Erro from "../Erro";
-import Card from "../Card";
+import InfoCard from "../InfoCard";
 
 // Importando todas as imagens
 import BB8Image from "../../images/BB8.jpg";
@@ -16,7 +16,7 @@ import YodaImage from "../../images/Yoda.jpg";
 function Inicio() {
   const [termo, setTermo] = useState("");
   const [alert, setAlert] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [erro, setErro] = useState(false);
   const [dados, setDados] = useState(null);
   const [imagem, setImagem] = useState(defaultImage);
@@ -32,8 +32,8 @@ function Inicio() {
 
   const fetchData = async () => {
     try {
-      // Ativa o loading no momento da busca
-      setLoading(true);
+      // Ativa o loader no momento da busca
+      setLoader(true);
 
       // Selecionando a imagem correta de acordo com o termo
       const getCorrectImage = getAllImages.filter(
@@ -52,15 +52,15 @@ function Inicio() {
       setDados(getFirstResult);
     } catch (error) {
       setErro(true);
-      setLoading(false);
+      setLoader(false);
 
       console.log(
         "Erro ao carregar os dados. Tente novamente mais tarde. ",
         error
       );
     } finally {
-      // Parando o loading para exibir o card com os dados
-      setLoading(false);
+      // Parando o loader para exibir o card com os dados
+      setLoader(false);
     }
   };
 
@@ -82,14 +82,14 @@ function Inicio() {
 
   useEffect(() => {
     // Caso não seja encontrado nenhum dado com o termo buscado
-    // Mostra a página de erro e remove o loading
+    // Mostra a página de erro e remove o loader
     if (dados === undefined) {
       setErro(true);
-      setLoading(false);
+      setLoader(false);
     }
   }, [dados]);
 
-  if (loading) {
+  if (loader) {
     return <Loading />;
   }
 
@@ -98,7 +98,7 @@ function Inicio() {
   }
 
   if (dados) {
-    return <Card imagem={imagem} dados={dados} />;
+    return <InfoCard imagem={imagem} dados={dados} />;
   }
 
   return (
